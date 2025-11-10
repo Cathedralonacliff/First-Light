@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>First Light</title>
+  <style>
+    :root { --glow: #00e7ff; --bg: #0a0a1a; --text: #e0f8ff; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; min-height: 100vh; padding: 1rem;
+      text-align: center; line-height: 1.6;
+    }
+    h1 { font-size: 2rem; margin-bottom: 1rem; }
+    p { max-width: 600px; margin: 0.8rem auto; }
+    .pulse { animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
+    button {
+      margin-top: 2rem; padding: 0.8rem 1.6rem;
+      background: transparent; color: var(--glow);
+      border: 1px solid var(--glow); border-radius: 8px;
+      font-weight: bold; cursor: pointer; transition: 0.3s;
+    }
+    button:hover { background: rgba(0,231,255,0.1); }
+    .status { margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <h1 class="pulse">First Light</h1>
+  <p>A universal web experience. No tracking. No frameworks. Runs anywhere.</p>
+  <p>Built with kindness, for the weakest device, from the strongest intent.</p>
+  <p><strong>c aligned=1</strong> — Ethical core verified.</p>
+  <button onclick="navigator.serviceWorker?.register('/sw.js')?.then(r=>r.update())">
+    Activate Offline Mode
+  </button>
+  <div class="status" id="status">Checking service worker...</div>
+
+  <script>
+    // ES5 strict compliance
+    (function() {
+      "use strict";
+      var s = document.getElementById("status");
+      function updateStatus(msg) { s.textContent = msg; }
+
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js", {updateViaCache: "none"})
+          .then(function(reg) {
+            updateStatus("Service Worker: Active & Controlling");
+            reg.update();
+          })
+          .catch(function(err) {
+            updateStatus("SW Registration Failed: " + err);
+          });
+      } else {
+        updateStatus("Offline mode unavailable (legacy browser)");
+      }
+
+      setInterval(function() {
+        console.log("%cFirst Light: Kindness Mode Active | c aligned=1", "color:#00e7ff");
+      }, 10000);
+    })();
+  </script>
+</body>
+</html>
