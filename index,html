@@ -17,48 +17,73 @@
     }
     h1 { font-size: 2rem; margin-bottom: 1rem; }
     p { max-width: 600px; margin: 0.8rem auto; }
-    .pulse { animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
     button {
-      margin-top: 2rem; padding: 0.8rem 1.6rem;
+      margin: 1rem; padding: 0.8rem 1.6rem;
       background: transparent; color: var(--glow);
       border: 1px solid var(--glow); border-radius: 8px;
       font-weight: bold; cursor: pointer; transition: 0.3s;
     }
     button:hover { background: rgba(0,231,255,0.1); }
-    .status { margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8; }
+    .status { margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8; transition: opacity 0.5s; }
+    .status.success { color: #00ff85; opacity: 1; }
+    .status.error { color: #ff8585; opacity: 1; }
   </style>
 </head>
 <body>
-  <h1 class="pulse">First Light</h1>
+  <h1>First Light</h1>
   <p>A universal web experience. No tracking. No frameworks. Runs anywhere.</p>
   <p>Built with kindness, for the weakest device, from the strongest intent.</p>
   <p><strong>c aligned=1</strong> — Ethical core verified.</p>
-  <button onclick="navigator.serviceWorker?.register('/sw.js')?.then(r=>r.update())">
+  <button id="activateBtn" onclick="registerServiceWorker()">
     Activate Offline Mode
   </button>
+  <button id="retryBtn" style="display: none;" onclick="registerServiceWorker()">
+    Try Again with a Smile
+  </button>
   <div class="status" id="status">Checking service worker...</div>
-
   <script>
     // ES5 strict compliance
     (function() {
       "use strict";
       var s = document.getElementById("status");
-      function updateStatus(msg) { s.textContent = msg; }
-
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/sw.js", {updateViaCache: "none"})
-          .then(function(reg) {
-            updateStatus("Service Worker: Active & Controlling");
-            reg.update();
-          })
-          .catch(function(err) {
-            updateStatus("SW Registration Failed: " + err);
-          });
-      } else {
-        updateStatus("Offline mode unavailable (legacy browser)");
+      var activateBtn = document.getElementById("activateBtn");
+      var retryBtn = document.getElementById("retryBtn");
+      
+      function updateStatus(msg, isSuccess) {
+        s.textContent = msg;
+        s.className = "status " + (isSuccess ? "success" : "error");
+        if (!isSuccess) {
+          retryBtn.style.display = "inline-block";
+        } else {
+          retryBtn.style.display = "none";
+        }
       }
-
+      
+      function registerServiceWorker() {
+        activateBtn.disabled = true;
+        retryBtn.disabled = true;
+        updateStatus("Gently activating... Hang tight!", true);
+        
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("/sw.js", {updateViaCache: "none"})
+            .then(function(reg) {
+              updateStatus("Service Worker: Active & Ready to Explore! 😊", true);
+              reg.update();
+              activateBtn.disabled = false;
+            })
+            .catch(function(err) {
+              updateStatus("Whoops, even lights flicker sometimes—Error: " + err + ". Let's try again!", false);
+              activateBtn.disabled = false;
+              retryBtn.disabled = false;
+            });
+        } else {
+          updateStatus("Offline mode unavailable on this device, but we're still here together! 🌟", false);
+        }
+      }
+      
+      // Initial check
+      updateStatus("Ready when you are—let's light it up kindly.", true);
+      
       setInterval(function() {
         console.log("%cFirst Light: Kindness Mode Active | c aligned=1", "color:#00e7ff");
       }, 10000);
