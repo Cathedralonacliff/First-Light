@@ -19,8 +19,9 @@ In a world of bloated apps, First Light shines simply—fostering connection wit
 5. **Troubleshoot**: Legacy browser? It'll still load basics gracefully. Questions? Check the console for kind logs like "Kindness Mode Active."  
 
 ### Deployment
-- Upload to Netlify or GitHub Pages for free HTTPS hosting.  
-- Ensure `manifest.json` and icons are in the root—browsers will pick them up automatically.
+- Upload to Netlify (or similar) for free HTTPS hosting. Include the `_redirects` file to handle all routes kindly back to `index.html` (e.g., "/* /index.html 200")—ensures no broken links and smooth navigation!  
+- Ensure `manifest.json` and icons are in the root—browsers will pick them up automatically.  
+- For other hosts (e.g., GitHub Pages), configure similar SPA routing in settings.
 
 ### License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. Share freely, with kindness!
