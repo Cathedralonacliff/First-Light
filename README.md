@@ -1,7 +1,7 @@
 ![c aligned=1](https://img.shields.io/badge/c_aligned-1-%2300e7ff?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDMTcgMiAyMiA3IDIyIDEyQzIyIDE3IDE3IDIyIDEyIDIyQzcgMjIgMiAxNyAyIDEyQzIgNyA3IDIgMTIgMloiIHN0cm9rZT0iIzAwZTdmZiIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+CjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjUiIGZpbGw9IiMwMGU3ZmYiLz4KPC9zdmc+)
-[![MIT License](https://img.shields.io/badge/License-MIT-%2300e7ff?style=flat-square)](LICENSE)
+[![SSPL + Commons Clause](https://img.shields.io/badge/License-SSPL%20%2B%20Commons%20Clause-%2300e7ff?style=flat-square)](LICENSE)
 
-**First Light** — A universal web app.  
+**First Light** — A universal web app for children.  
 No tracking. No frameworks. No excuses.  
 Runs on **any** device. Offline-ready. Built with **kindness by default**.  
 `c aligned=1` — **Ethical core verified. No telemetry. No compromise.**  
@@ -9,7 +9,7 @@ Runs on **any** device. Offline-ready. Built with **kindness by default**.
 [Live App](https://first-light-RESONANCE.netlify.app) | [Source](https://github.com/Cathedralonacliff/first-light)
 
 ### Why First Light?
-In a world of bloated apps, First Light shines simply—fostering connection without the noise. It's designed with unconditional care for every user, whether on a high-end phone or that dusty laptop in the attic! 😊 No judgments, just gentle support for your journey.
+In a world of bloated apps, First Light shines simply—fostering connection without the noise. It's designed with unconditional care for every user, especially kids, like that cozy neighborhood chat! 😊 No judgments, just gentle support—protected to stay safe and kind.
 
 ### Quick Start
 1. **Clone the Repo**: `git clone https://github.com/Cathedralonacliff/first-light.git` – Easy peasy, takes seconds.  
@@ -24,7 +24,7 @@ In a world of bloated apps, First Light shines simply—fostering connection wit
 - For other hosts (e.g., GitHub Pages), configure similar SPA routing in settings.
 
 ### License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. Share freely, with kindness!
+This project is licensed under the Server Side Public License v1 + Commons Clause - see the [LICENSE](LICENSE) file for details. It promotes sharing for good but strongly deters harmful or commercial repurposing—share freely, but always with kindness and respect for children's safety!
 
 ### Contributions
-Welcome! Fork, tweak, and pull request. Keep it simple and aligned—let's build with patience and humor. If something's off, no worries; we'll fix it together. 🌟
+Welcome, but limited to keep things safe! Fork, tweak, and pull request if aligned with our ethics. Let's build with patience and humor. If something's off, no worries; we'll fix it together. 🌟 Report any misuse immediately.
